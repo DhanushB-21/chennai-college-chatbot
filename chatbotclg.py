@@ -78,18 +78,21 @@ with st.sidebar:
             Explore available programs and courses.
         </div>
     </div>
+
     <div class="sidebar-card">
         <div class="sidebar-card-title">🎯 Admissions</div>
         <div class="sidebar-card-text">
             Get information about admission procedures.
         </div>
     </div>
+
     <div class="sidebar-card">
         <div class="sidebar-card-title">🏫 Campus</div>
         <div class="sidebar-card-text">
             Learn about campus facilities and student life.
         </div>
     </div>
+
     <div class="sidebar-card">
         <div class="sidebar-card-title">💡 Ask Anything</div>
         <div class="sidebar-card-text">
@@ -109,6 +112,7 @@ with st.sidebar:
             <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;"></span>
             AI Online
         </div>
+
         <div class="sidebar-card-text">
             Ready to answer your questions.
         </div>
@@ -138,17 +142,24 @@ with st.sidebar:
 
 st.markdown("""
 <div class="hero">
-<div class="hero-content">
-<div class="status"><span class="status-dot"></span>AI ASSISTANT • ONLINE</div>
-<h1 class="hero-title">Find the right college.<br>Ask anything.</h1>
-<div class="hero-description">
-Your intelligent guide to colleges in Chennai —
-explore courses, admissions, facilities and more.
-</div>
-</div>
+    <div class="hero-content">
+        <div class="status">
+            <span class="status-dot"></span>
+            AI ASSISTANT • ONLINE
+        </div>
+
+        <h1 class="hero-title">
+            Find the right college.<br>
+            Ask anything.
+        </h1>
+
+        <div class="hero-description">
+            Your intelligent guide to colleges in Chennai —
+            explore courses, admissions, facilities and more.
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
-
 /* ---------- QUICK QUESTIONS ---------- */
 
 .quick-title {
