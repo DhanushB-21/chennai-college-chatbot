@@ -2,7 +2,7 @@ import streamlit as st
 from google import genai
 
 # ============================================================
-# PAGE CONFIGURATION
+# PAGE CONFIG
 # ============================================================
 
 st.set_page_config(
@@ -24,6 +24,21 @@ except FileNotFoundError:
     st.stop()
 
 # ============================================================
+# GEMINI CLIENT
+# ============================================================
+
+try:
+    client = genai.Client(
+        api_key=st.secrets["GEMINI_API_KEY"]
+    )
+except Exception as e:
+    st.error("Gemini API key is not configured correctly.")
+    st.stop()
+
+# Use your available Gemini model
+model = "gemini-flash-latest"
+
+# ============================================================
 # SYSTEM PROMPT
 # ============================================================
 
@@ -38,29 +53,13 @@ RULES:
 1. Answer politely and clearly.
 2. ONLY use information provided in the knowledge base below.
 3. If the answer is not available in the knowledge base, say:
-   "Sorry, I don't have that information in my college database."
-4. Never make up, guess, or assume information.
-5. Keep answers relevant to the user's question.
+"Sorry, I don't have that information in my college database."
+4. Never make up or guess information.
+5. Keep the answer relevant to the user's question.
 
 KNOWLEDGE BASE:
 {kb}
 """
-
-# ============================================================
-# GEMINI CLIENT
-# ============================================================
-
-try:
-    client = genai.Client(
-        api_key=st.secrets["GEMINI_API_KEY"],
-        http_options={"api_version": "v1"}
-    )
-except Exception:
-    st.error("Unable to initialize Gemini. Please check your API key.")
-    st.stop()
-
-# Use a stable model instead of the moving "latest" alias.
-model = "gemini-3.6-flash"
 
 # ============================================================
 # CHAT HISTORY
@@ -70,7 +69,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ============================================================
-# UI
+# HEADER
 # ============================================================
 
 st.title("🎓 College Info Bot")
@@ -84,9 +83,10 @@ st.caption(
 # DISPLAY CHAT HISTORY
 # ============================================================
 
-for msg in st.session_state.messages:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+for message in st.session_state.messages:
+
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
 # ============================================================
 # CHAT INPUT
@@ -97,7 +97,7 @@ user_input = st.chat_input("Ask about a college...")
 if user_input:
 
     # --------------------------------------------------------
-    # Save and display user message
+    # Display user message
     # --------------------------------------------------------
 
     st.session_state.messages.append(
@@ -111,18 +111,21 @@ if user_input:
         st.markdown(user_input)
 
     # --------------------------------------------------------
-    # Build conversation
+    # Build conversation history
     # --------------------------------------------------------
 
     conversation = ""
 
-    for msg in st.session_state.messages:
+    for message in st.session_state.messages:
         conversation += (
-            f"{msg['role'].upper()}: {msg['content']}\n"
+            message["role"].upper()
+            + ": "
+            + message["content"]
+            + "\n"
         )
 
     # --------------------------------------------------------
-    # Generate response
+    # Generate Gemini response
     # --------------------------------------------------------
 
     with st.chat_message("assistant"):
@@ -139,10 +142,12 @@ if user_input:
 CONVERSATION:
 {conversation}
 
+Answer the latest user question.
+
 IMPORTANT:
-Answer ONLY the latest user question.
 Use ONLY the knowledge base.
-If the information is not present in the knowledge base, reply:
+Do not invent information.
+If the information is not available, say:
 
 "Sorry, I don't have that information in my college database."
 """
@@ -166,7 +171,6 @@ If the information is not present in the knowledge base, reply:
 
                 st.markdown(answer)
 
-                # Show technical error only in the app logs
                 print("Gemini API Error:", repr(e))
 
     # --------------------------------------------------------
@@ -195,16 +199,16 @@ with st.sidebar:
 
     st.divider()
 
-    st.subheader("💬 What can I ask?")
+    st.subheader("💬 You can ask about")
 
     st.write(
         """
-        • Colleges  
-        • Courses  
-        • Admissions  
-        • Eligibility  
-        • Fees  
-        • Departments  
+        • Colleges
+        • Courses
+        • Admissions
+        • Eligibility
+        • Fees
+        • Departments
         • Contact information
         """
     )
