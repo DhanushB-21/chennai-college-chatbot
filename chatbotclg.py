@@ -86,11 +86,15 @@ with st.sidebar:
 
 /* ---------- HERO ---------- */
 
+# ---------- Hero Header ----------
+
 st.markdown("""
 <div class="hero">
     <div class="hero-content">
+
         <div class="status">
             <span class="status-dot"></span>
+            AI ASSISTANT - ONLINE
         </div>
 
         <h1 class="hero-title">
@@ -99,12 +103,14 @@ st.markdown("""
         </h1>
 
         <div class="hero-description">
-            Your intelligent guide to colleges in Chennai —
+            Your intelligent guide to colleges in Chennai -
             explore courses, admissions, facilities and more.
         </div>
+
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 /* ---------- QUICK QUESTIONS ---------- */
 
 .quick-title {
