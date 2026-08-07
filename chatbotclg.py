@@ -5,7 +5,7 @@ st.set_page_config(
     page_title="College Bot",
     page_icon="🎓",
     layout="wide",
-    initial_sidebar_stage="expanded"
+    initial_sidebar_state="expanded"
 )
 
 # ---------- Load knowledge base ----------
