@@ -2,7 +2,7 @@ import streamlit as st
 from google import genai
 
 st.set_page_config(
-    page_title="Chennai College Bot",
+    page_title="College Bot",
     page_icon="🎓",
     layout="centered"
 )
@@ -38,7 +38,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ---------- UI ----------
-st.title("🎓 Chennai College Info Bot")
+st.title("🎓 College Info Bot")
 st.caption(
     "Ask me anything about colleges in Chennai — courses, admissions, and more."
 )
