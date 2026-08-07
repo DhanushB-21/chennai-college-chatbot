@@ -220,4 +220,3 @@ with st.sidebar:
         st.session_state.messages = []
 
         st.rerun()
-```
