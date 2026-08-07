@@ -23,10 +23,23 @@ html, body, [class*="css"] {
 
 .stApp {
     background:
-        radial-gradient(circle at 10% 10%, rgba(99,102,241,0.13), transparent 28%),
-        radial-gradient(circle at 90% 20%, rgba(168,85,247,0.10), transparent 30%),
-        radial-gradient(circle at 50% 100%, rgba(59,130,246,0.08), transparent 35%),
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(99,102,241,0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(168,85,247,0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(59,130,246,0.08),
+            transparent 35%
+        ),
         #080b14;
+
     color: #f8fafc;
 }
 
@@ -37,7 +50,9 @@ html, body, [class*="css"] {
 }
 
 
-/* ---------- HIDE DEFAULT STREAMLIT UI ---------- */
+/* ============================================================
+   HIDE DEFAULT STREAMLIT UI
+   ============================================================ */
 
 #MainMenu {
     visibility: hidden;
@@ -52,72 +67,249 @@ header {
 }
 
 
-/* ---------- SIDEBAR ---------- */
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
 
-with st.sidebar:
-    st.markdown("## College Info AI")
-    st.caption("Your intelligent guide to college information.")
+[data-testid="stSidebar"] {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,0.98),
+            rgba(8,11,20,0.98)
+        );
 
-    st.divider()
+    border-right: 1px solid rgba(255,255,255,0.07);
+}
 
-    st.markdown("### Explore")
+[data-testid="stSidebar"] > div {
+    padding-top: 2rem;
+}
 
-    st.info("**Courses**\n\nExplore available programs and courses.")
-    st.info("**Admissions**\n\nGet information about admission procedures.")
-    st.info("**Campus**\n\nLearn about campus facilities and student life.")
-    st.info("**Ask Anything**\n\nAsk questions about colleges in Chennai.")
+.sidebar-brand {
+    padding: 10px 8px 25px 8px;
+}
 
-    st.divider()
+.sidebar-logo {
+    width: 48px;
+    height: 48px;
 
-    st.markdown("### AI Online")
-    st.caption("Ready to answer your questions.")
+    border-radius: 15px;
 
-    st.divider()
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    st.markdown("### About")
-    st.caption(
-        "This bot answers questions about colleges in Chennai "
-        "using a fixed knowledge base."
-    )
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
 
-    if st.button("Clear chat", use_container_width=True):
-        st.session_state.messages = []
-        st.rerun()
+    box-shadow:
+        0 10px 30px rgba(99,102,241,0.35);
 
-/* ---------- HERO ---------- */
+    font-size: 24px;
 
-# ---------- Hero Header ----------
+    margin-bottom: 14px;
+}
 
-st.markdown("""
-<div class="hero">
-    <div class="hero-content">
+.sidebar-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #ffffff;
+}
 
-        <div class="status">
-            <span class="status-dot"></span>
-            AI ASSISTANT - ONLINE
-        </div>
+.sidebar-subtitle {
+    font-size: 12px;
+    color: #94a3b8;
 
-        <h1 class="hero-title">
-            Find the right college.<br>
-            Ask anything.
-        </h1>
+    margin-top: 5px;
 
-        <div class="hero-description">
-            Your intelligent guide to colleges in Chennai -
-            explore courses, admissions, facilities and more.
-        </div>
+    line-height: 1.5;
+}
 
-    </div>
-</div>
-""", unsafe_allow_html=True)
+.sidebar-section {
+    color: #64748b;
 
-/* ---------- QUICK QUESTIONS ---------- */
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    margin: 25px 5px 10px;
+}
+
+.sidebar-card {
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    margin-bottom: 10px;
+}
+
+.sidebar-card-title {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #e2e8f0;
+}
+
+.sidebar-card-text {
+    font-size: 11px;
+
+    color: #64748b;
+
+    margin-top: 4px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+    position: relative;
+
+    padding: 30px 32px;
+
+    margin-bottom: 22px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,41,59,0.85),
+            rgba(15,23,42,0.72)
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.25);
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    top: -100px;
+
+    background: #6366f1;
+
+    filter: blur(90px);
+
+    opacity: 0.25;
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: rgba(34,197,94,0.09);
+
+    border: 1px solid rgba(34,197,94,0.18);
+
+    color: #86efac;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 14px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px rgba(34,197,94,0.8);
+}
+
+.hero-title {
+    font-size: clamp(26px, 4vw, 40px);
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c4b5fd,
+            #93c5fd
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 650px;
+
+    margin-top: 10px;
+}
+
+
+/* ============================================================
+   QUICK QUESTIONS
+   ============================================================ */
 
 .quick-title {
     color: #64748b;
+
     font-size: 11px;
+
     font-weight: 700;
+
     letter-spacing: 1px;
+
     text-transform: uppercase;
 
     margin: 20px 0 10px 3px;
@@ -140,9 +332,11 @@ st.markdown("""
 .quick-card:hover {
     transform: translateY(-2px);
 
-    border-color: rgba(129,140,248,0.35);
+    border-color:
+        rgba(129,140,248,0.35);
 
-    background: rgba(99,102,241,0.08);
+    background:
+        rgba(99,102,241,0.08);
 
     box-shadow:
         0 10px 30px rgba(0,0,0,0.18);
@@ -150,29 +344,38 @@ st.markdown("""
 
 .quick-icon {
     font-size: 20px;
+
     margin-bottom: 7px;
 }
 
 .quick-card-title {
     font-size: 12px;
+
     font-weight: 600;
+
     color: #e2e8f0;
 }
 
 .quick-card-text {
     font-size: 10px;
+
     color: #64748b;
+
     margin-top: 3px;
 }
 
 
-/* ---------- CHAT ---------- */
+/* ============================================================
+   CHAT
+   ============================================================ */
 
 [data-testid="stChatMessage"] {
     background: transparent !important;
+
     border: none !important;
 
     padding-top: 8px !important;
+
     padding-bottom: 8px !important;
 }
 
@@ -182,6 +385,7 @@ st.markdown("""
     padding: 15px 18px !important;
 
     font-size: 14px !important;
+
     line-height: 1.65 !important;
 }
 
@@ -230,7 +434,9 @@ st.markdown("""
 }
 
 
-/* ---------- CHAT INPUT ---------- */
+/* ============================================================
+   CHAT INPUT
+   ============================================================ */
 
 [data-testid="stChatInput"] {
     position: fixed;
@@ -247,7 +453,8 @@ st.markdown("""
 }
 
 [data-testid="stChatInput"] > div {
-    background: rgba(15,23,42,0.92) !important;
+    background:
+        rgba(15,23,42,0.92) !important;
 
     border:
         1px solid rgba(255,255,255,0.12) !important;
@@ -272,14 +479,18 @@ st.markdown("""
 }
 
 
-/* ---------- BUTTONS ---------- */
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
 .stButton > button {
     border-radius: 12px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    background: rgba(255,255,255,0.04);
+    background:
+        rgba(255,255,255,0.04);
 
     color: #cbd5e1;
 
@@ -287,20 +498,27 @@ st.markdown("""
 }
 
 .stButton > button:hover {
-    border-color: rgba(129,140,248,0.4);
+    border-color:
+        rgba(129,140,248,0.4);
 
-    background: rgba(99,102,241,0.12);
+    background:
+        rgba(99,102,241,0.12);
 
     color: #ffffff;
 }
 
 
-/* ---------- MOBILE ---------- */
+/* ============================================================
+   MOBILE
+   ============================================================ */
 
 @media (max-width: 768px) {
 
     .block-container {
-        padding: 1rem 0.8rem 6rem !important;
+        padding:
+            1rem
+            0.8rem
+            6rem !important;
     }
 
     [data-testid="stSidebar"] {
@@ -325,6 +543,7 @@ st.markdown("""
 
     .quick-card {
         min-height: 75px;
+
         padding: 11px;
     }
 
@@ -343,7 +562,9 @@ st.markdown("""
     [data-testid="stChatMessageContent"] {
         font-size: 13px !important;
 
-        padding: 12px 14px !important;
+        padding:
+            12px
+            14px !important;
     }
 
     [data-testid="stChatInput"] {
@@ -354,7 +575,9 @@ st.markdown("""
 }
 
 
-/* ---------- SMALL PHONES ---------- */
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
 
 @media (max-width: 420px) {
 
@@ -379,11 +602,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ---------- Load knowledge base ----------
+# ============================================================
+# LOAD KNOWLEDGE BASE
+# ============================================================
+
 with open("college_details.txt", "r", encoding="utf-8") as f:
     kb = f.read()
 
-# ---------- Build system prompt ----------
+
+# ============================================================
+# BUILD SYSTEM PROMPT
+# ============================================================
+
 prompt = f"""
 You are the Chennai College Info Bot for students who have completed 12th grade.
 
@@ -400,21 +630,29 @@ KNOWLEDGE BASE:
 {kb}
 """
 
-# ---------- Gemini client ----------
-client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
+
+# ============================================================
+# GEMINI CLIENT
+# ============================================================
+
+client = genai.Client(
+    api_key=st.secrets["GEMINI_API_KEY"]
+)
 
 model = "gemini-flash-latest"
 
-# ---------- Initialize messages ----------
+
+# ============================================================
+# INITIALIZE MESSAGES
+# ============================================================
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 
 # ============================================================
-# PREMIUM UI
+# PREMIUM HERO
 # ============================================================
-
-# ---------- Hero Header ----------
 
 st.markdown("""
 <div class="hero">
@@ -423,7 +661,7 @@ st.markdown("""
 
         <div class="status">
             <span class="status-dot"></span>
-            AI ASSISTANT • ONLINE
+            AI ASSISTANT - ONLINE
         </div>
 
         <h1 class="hero-title">
@@ -432,7 +670,7 @@ st.markdown("""
         </h1>
 
         <div class="hero-description">
-            Your intelligent guide to colleges in Chennai —
+            Your intelligent guide to colleges in Chennai -
             explore courses, admissions, facilities and more.
         </div>
 
@@ -442,7 +680,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ---------- Quick Questions ----------
+# ============================================================
+# QUICK QUESTIONS
+# ============================================================
 
 if len(st.session_state.messages) == 0:
 
@@ -454,76 +694,136 @@ if len(st.session_state.messages) == 0:
     col1, col2, col3 = st.columns(3)
 
     with col1:
+
         st.markdown("""
         <div class="quick-card">
-            <div class="quick-icon">🎓</div>
+
+            <div class="quick-icon">
+                🎓
+            </div>
+
             <div class="quick-card-title">
                 What courses are available?
             </div>
+
             <div class="quick-card-text">
                 Explore programs and courses.
             </div>
+
         </div>
         """, unsafe_allow_html=True)
 
     with col2:
+
         st.markdown("""
         <div class="quick-card">
-            <div class="quick-icon">📝</div>
+
+            <div class="quick-icon">
+                📝
+            </div>
+
             <div class="quick-card-title">
                 How does admission work?
             </div>
+
             <div class="quick-card-text">
                 Learn about admission procedures.
             </div>
+
         </div>
         """, unsafe_allow_html=True)
 
     with col3:
+
         st.markdown("""
         <div class="quick-card">
-            <div class="quick-icon">🏫</div>
+
+            <div class="quick-icon">
+                🏫
+            </div>
+
             <div class="quick-card-title">
                 Tell me about the campus
             </div>
+
             <div class="quick-card-text">
                 Discover campus facilities.
             </div>
+
         </div>
         """, unsafe_allow_html=True)
 
 
-# ---------- Show chat history ----------
+# ============================================================
+# CHAT HISTORY
+# ============================================================
+
 for msg in st.session_state.messages:
 
-    avatar = "🤖" if msg["role"] == "assistant" else "👤"
+    if msg["role"] == "assistant":
+        avatar = "🤖"
+    else:
+        avatar = "👤"
 
-    with st.chat_message(msg["role"], avatar=avatar):
+    with st.chat_message(
+        msg["role"],
+        avatar=avatar
+    ):
         st.markdown(msg["content"])
 
 
-# ---------- Chat input ----------
-user_input = st.chat_input("Ask about a college, course, admission...")
+# ============================================================
+# CHAT INPUT
+# ============================================================
+
+user_input = st.chat_input(
+    "Ask about a college, course, admission..."
+)
 
 
 if user_input:
 
-    # Show user message
+    # --------------------------------------------------------
+    # Save user message
+    # --------------------------------------------------------
+
     st.session_state.messages.append(
-        {"role": "user", "content": user_input}
+        {
+            "role": "user",
+            "content": user_input
+        }
     )
 
-    with st.chat_message("user", avatar="👤"):
+    with st.chat_message(
+        "user",
+        avatar="👤"
+    ):
         st.markdown(user_input)
 
+
+    # --------------------------------------------------------
     # Prepare conversation history
+    # --------------------------------------------------------
+
     conversation = ""
 
     for msg in st.session_state.messages:
-        conversation += f"{msg['role']}: {msg['content']}\n"
 
+        conversation += (
+            f"{msg['role']}: "
+            f"{msg['content']}\n"
+        )
+
+
+    # --------------------------------------------------------
     # Get bot response
-    with st.chat_message("assistant", avatar="🤖"):
+    # --------------------------------------------------------
+
+    with st.chat_message(
+        "assistant",
+        avatar="🤖"
+    ):
+
         with st.spinner("Thinking..."):
 
             response = client.models.generate_content(
@@ -539,11 +839,19 @@ Answer the user's latest question using ONLY the knowledge base.
             )
 
             answer = response.text
+
             st.markdown(answer)
 
+
+    # --------------------------------------------------------
     # Save bot response
+    # --------------------------------------------------------
+
     st.session_state.messages.append(
-        {"role": "assistant", "content": answer}
+        {
+            "role": "assistant",
+            "content": answer
+        }
     )
 
 
@@ -553,11 +861,15 @@ Answer the user's latest question using ONLY the knowledge base.
 
 with st.sidebar:
 
+    # --------------------------------------------------------
+    # Sidebar Brand
+    # --------------------------------------------------------
+
     st.markdown("""
     <div class="sidebar-brand">
 
         <div class="sidebar-logo">
-            🎓
+            College
         </div>
 
         <div class="sidebar-title">
@@ -572,6 +884,10 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
+    # --------------------------------------------------------
+    # Explore
+    # --------------------------------------------------------
+
     st.markdown(
         '<div class="sidebar-section">Explore</div>',
         unsafe_allow_html=True
@@ -582,7 +898,7 @@ with st.sidebar:
     <div class="sidebar-card">
 
         <div class="sidebar-card-title">
-            📚 Courses
+            Courses
         </div>
 
         <div class="sidebar-card-text">
@@ -591,11 +907,10 @@ with st.sidebar:
 
     </div>
 
-
     <div class="sidebar-card">
 
         <div class="sidebar-card-title">
-            🎯 Admissions
+            Admissions
         </div>
 
         <div class="sidebar-card-text">
@@ -604,11 +919,10 @@ with st.sidebar:
 
     </div>
 
-
     <div class="sidebar-card">
 
         <div class="sidebar-card-title">
-            🏫 Campus
+            Campus
         </div>
 
         <div class="sidebar-card-text">
@@ -617,11 +931,10 @@ with st.sidebar:
 
     </div>
 
-
     <div class="sidebar-card">
 
         <div class="sidebar-card-title">
-            💡 Ask Anything
+            Ask Anything
         </div>
 
         <div class="sidebar-card-text">
@@ -631,6 +944,10 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
+
+    # --------------------------------------------------------
+    # AI Status
+    # --------------------------------------------------------
 
     st.markdown(
         '<div class="sidebar-section">AI Status</div>',
@@ -670,11 +987,15 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
-    # ---------- Your original About section ----------
+    # --------------------------------------------------------
+    # About
+    # --------------------------------------------------------
+
     st.markdown(
         '<div class="sidebar-section">About</div>',
         unsafe_allow_html=True
     )
+
 
     st.markdown("""
     <div class="sidebar-card">
@@ -688,8 +1009,14 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
-    # ---------- Your original Clear Chat button ----------
-    if st.button("🗑️ Clear chat"):
+    # --------------------------------------------------------
+    # Clear Chat
+    # --------------------------------------------------------
+
+    if st.button(
+        "Clear chat",
+        use_container_width=True
+    ):
 
         st.session_state.messages = []
 
