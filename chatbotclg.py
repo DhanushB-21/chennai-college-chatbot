@@ -54,203 +54,100 @@ header {
 
 /* ---------- SIDEBAR ---------- */
 
-[data-testid="stSidebar"] {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(15, 23, 42, 0.98),
-            rgba(8, 11, 20, 0.98)
-        );
-    border-right: 1px solid rgba(255,255,255,0.07);
-}
+with st.sidebar:
 
-[data-testid="stSidebar"] > div {
-    padding-top: 2rem;
-}
+    st.markdown("""
+    <div class="sidebar-brand">
+        <div class="sidebar-logo">🎓</div>
+        <div class="sidebar-title">College Info AI</div>
+        <div class="sidebar-subtitle">
+            Your intelligent guide to college information.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-.sidebar-brand {
-    padding: 10px 8px 25px 8px;
-}
+    st.markdown(
+        '<div class="sidebar-section">Explore</div>',
+        unsafe_allow_html=True
+    )
 
-.sidebar-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
+    st.markdown("""
+    <div class="sidebar-card">
+        <div class="sidebar-card-title">📚 Courses</div>
+        <div class="sidebar-card-text">
+            Explore available programs and courses.
+        </div>
+    </div>
+    <div class="sidebar-card">
+        <div class="sidebar-card-title">🎯 Admissions</div>
+        <div class="sidebar-card-text">
+            Get information about admission procedures.
+        </div>
+    </div>
+    <div class="sidebar-card">
+        <div class="sidebar-card-title">🏫 Campus</div>
+        <div class="sidebar-card-text">
+            Learn about campus facilities and student life.
+        </div>
+    </div>
+    <div class="sidebar-card">
+        <div class="sidebar-card-title">💡 Ask Anything</div>
+        <div class="sidebar-card-text">
+            Ask questions about colleges in Chennai.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    st.markdown(
+        '<div class="sidebar-section">AI Status</div>',
+        unsafe_allow_html=True
+    )
 
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #8b5cf6
-        );
+    st.markdown("""
+    <div class="sidebar-card">
+        <div style="display:flex;align-items:center;gap:8px;color:#86efac;font-size:12px;font-weight:600;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;"></span>
+            AI Online
+        </div>
+        <div class="sidebar-card-text">
+            Ready to answer your questions.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    box-shadow:
-        0 10px 30px rgba(99,102,241,0.35);
+    st.markdown(
+        '<div class="sidebar-section">About</div>',
+        unsafe_allow_html=True
+    )
 
-    font-size: 24px;
-    margin-bottom: 14px;
-}
+    st.markdown("""
+    <div class="sidebar-card">
+        <div class="sidebar-card-text">
+            This bot answers questions about colleges in Chennai
+            using a fixed knowledge base.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-.sidebar-title {
-    font-size: 19px;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.sidebar-subtitle {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 5px;
-    line-height: 1.5;
-}
-
-.sidebar-section {
-    color: #64748b;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    margin: 25px 5px 10px;
-}
-
-.sidebar-card {
-    padding: 14px;
-    border-radius: 14px;
-
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.06);
-
-    margin-bottom: 10px;
-}
-
-.sidebar-card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #e2e8f0;
-}
-
-.sidebar-card-text {
-    font-size: 11px;
-    color: #64748b;
-    margin-top: 4px;
-    line-height: 1.5;
-}
+    if st.button("🗑️ Clear chat"):
+        st.session_state.messages = []
+        st.rerun()
 
 
 /* ---------- HERO ---------- */
 
-.hero {
-    position: relative;
-
-    padding: 30px 32px;
-    margin-bottom: 22px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,41,59,0.85),
-            rgba(15,23,42,0.72)
-        );
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.25);
-
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    right: -80px;
-    top: -100px;
-
-    background: #6366f1;
-
-    filter: blur(90px);
-    opacity: 0.25;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.status {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
-    padding: 6px 11px;
-
-    border-radius: 999px;
-
-    background: rgba(34,197,94,0.09);
-    border: 1px solid rgba(34,197,94,0.18);
-
-    color: #86efac;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    margin-bottom: 14px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-    background: #22c55e;
-
-    box-shadow: 0 0 12px rgba(34,197,94,0.8);
-}
-
-.hero-title {
-    font-size: clamp(26px, 4vw, 40px);
-    line-height: 1.1;
-
-    font-weight: 800;
-
-    letter-spacing: -1.5px;
-
-    margin: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #c4b5fd,
-            #93c5fd
-        );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-description {
-    color: #94a3b8;
-
-    font-size: 14px;
-    line-height: 1.7;
-
-    max-width: 650px;
-
-    margin-top: 10px;
-}
-
+st.markdown("""
+<div class="hero">
+<div class="hero-content">
+<div class="status"><span class="status-dot"></span>AI ASSISTANT • ONLINE</div>
+<h1 class="hero-title">Find the right college.<br>Ask anything.</h1>
+<div class="hero-description">
+Your intelligent guide to colleges in Chennai —
+explore courses, admissions, facilities and more.
+</div>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
 /* ---------- QUICK QUESTIONS ---------- */
 
