@@ -91,7 +91,6 @@ st.markdown("""
     <div class="hero-content">
         <div class="status">
             <span class="status-dot"></span>
-            AI ASSISTANT • ONLINE
         </div>
 
         <h1 class="hero-title">
