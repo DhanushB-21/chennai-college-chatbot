@@ -55,88 +55,34 @@ header {
 /* ---------- SIDEBAR ---------- */
 
 with st.sidebar:
+    st.markdown("## College Info AI")
+    st.caption("Your intelligent guide to college information.")
 
-    st.markdown("""
-    <div class="sidebar-brand">
-        <div class="sidebar-logo">🎓</div>
-        <div class="sidebar-title">College Info AI</div>
-        <div class="sidebar-subtitle">
-            Your intelligent guide to college information.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.divider()
 
-    st.markdown(
-        '<div class="sidebar-section">Explore</div>',
-        unsafe_allow_html=True
+    st.markdown("### Explore")
+
+    st.info("**Courses**\n\nExplore available programs and courses.")
+    st.info("**Admissions**\n\nGet information about admission procedures.")
+    st.info("**Campus**\n\nLearn about campus facilities and student life.")
+    st.info("**Ask Anything**\n\nAsk questions about colleges in Chennai.")
+
+    st.divider()
+
+    st.markdown("### AI Online")
+    st.caption("Ready to answer your questions.")
+
+    st.divider()
+
+    st.markdown("### About")
+    st.caption(
+        "This bot answers questions about colleges in Chennai "
+        "using a fixed knowledge base."
     )
 
-    st.markdown("""
-    <div class="sidebar-card">
-        <div class="sidebar-card-title">📚 Courses</div>
-        <div class="sidebar-card-text">
-            Explore available programs and courses.
-        </div>
-    </div>
-
-    <div class="sidebar-card">
-        <div class="sidebar-card-title">🎯 Admissions</div>
-        <div class="sidebar-card-text">
-            Get information about admission procedures.
-        </div>
-    </div>
-
-    <div class="sidebar-card">
-        <div class="sidebar-card-title">🏫 Campus</div>
-        <div class="sidebar-card-text">
-            Learn about campus facilities and student life.
-        </div>
-    </div>
-
-    <div class="sidebar-card">
-        <div class="sidebar-card-title">💡 Ask Anything</div>
-        <div class="sidebar-card-text">
-            Ask questions about colleges in Chennai.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown(
-        '<div class="sidebar-section">AI Status</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown("""
-    <div class="sidebar-card">
-        <div style="display:flex;align-items:center;gap:8px;color:#86efac;font-size:12px;font-weight:600;">
-            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;"></span>
-            AI Online
-        </div>
-
-        <div class="sidebar-card-text">
-            Ready to answer your questions.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown(
-        '<div class="sidebar-section">About</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown("""
-    <div class="sidebar-card">
-        <div class="sidebar-card-text">
-            This bot answers questions about colleges in Chennai
-            using a fixed knowledge base.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("🗑️ Clear chat"):
+    if st.button("Clear chat", use_container_width=True):
         st.session_state.messages = []
         st.rerun()
-
 
 /* ---------- HERO ---------- */
 
